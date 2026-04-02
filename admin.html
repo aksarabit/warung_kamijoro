@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Admin Panel Warung Kamijoro - Kelola menu dan stok">
+    <meta name="theme-color" content="#e67e22">
+    <link rel="stylesheet" href="admin.css">
+    <title>Admin Panel - Warung Kamijoro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Warung<span>Kamijoro</span></h2>
+                <small>Admin Panel</small>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active" data-page="dashboard">
+                    <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li data-page="menu">
+                    <a href="#"><i class="fas fa-utensils"></i> Kelola Menu</a>
+                </li>
+                <li data-page="orders">
+                    <a href="#"><i class="fas fa-shopping-cart"></i> Pesanan</a>
+                </li>
+                <li data-page="settings">
+                    <a href="#"><i class="fas fa-cog"></i> Pengaturan</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <h1 class="page-title" id="page-title">Dashboard</h1>
+                <a href="kamijoro.html" class="logout-btn">
+                    <i class="fas fa-store"></i> Lihat Toko
+                </a>
+            </div>
+
+            <!-- Dashboard Page -->
+            <div id="dashboard-page">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Menu</h3>
+                            <div class="number" id="total-menu">0</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Stok Habis</h3>
+                            <div class="number" id="out-of-stock">0</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Pesanan Hari Ini</h3>
+                            <div class="number" id="today-orders">0</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Pendapatan</h3>
+                            <div class="number" id="revenue">Rp 0</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-management">
+                    <h3 style="margin-bottom: 20px;">Menu Terbaru</h3>
+                    <div class="menu-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Gambar</th>
+                                    <th>Nama Menu</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-menu-list">
+                                <tr><td colspan="6" style="text-align: center;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelola Menu Page -->
+            <div id="menu-page" style="display: none;">
+                <div class="menu-management">
+                    <div class="section-header">
+                        <h2><i class="fas fa-list"></i> Daftar Menu</h2>
+                        <button class="btn-add" onclick="openAddModal()">
+                            <i class="fas fa-plus"></i> Tambah Menu
+                        </button>
+                    </div>
+                    <div class="menu-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Gambar</th>
+                                    <th>Nama Menu</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menu-list">
+                                <tr><td colspan="7" style="text-align: center;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pesanan Page -->
+            <div id="orders-page" style="display: none;">
+                <div class="menu-management">
+                    <div class="section-header">
+                        <h2><i class="fas fa-shopping-cart"></i> Daftar Pesanan</h2>
+                        <select id="order-filter" class="filter-select">
+                            <option value="all">Semua</option>
+                            <option value="pending">Pending</option>
+                            <option value="process">Diproses</option>
+                            <option value="done">Selesai</option>
+                        </select>
+                    </div>
+                    <div class="menu-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Waktu</th>
+                                    <th>Nama</th>
+                                    <th>Pesanan</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-list">
+                                <tr><td colspan="7" style="text-align: center;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pengaturan Page -->
+            <div id="settings-page" style="display: none;">
+                <div class="menu-management">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cog"></i> Pengaturan Toko</h2>
+                    </div>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Nama Toko</label>
+                            <input type="text" id="store-name" class="settings-input" placeholder="Nama toko Anda">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor WhatsApp</label>
+                            <input type="text" id="whatsapp-number" class="settings-input" placeholder="Contoh: 628123456789">
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat Toko</label>
+                            <textarea id="store-address" rows="3" class="settings-input" placeholder="Alamat lengkap toko"></textarea>
+                        </div>
+                        <button class="btn-save" onclick="saveSettings()">Simpan Pengaturan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah/Edit Menu -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Tambah Menu</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Menu <span style="color: red;">*</span></label>
+                    <input type="text" id="menu-name" class="form-input" placeholder="Contoh: Nasi Goreng Spesial">
+                </div>
+                <div class="form-group">
+                    <label>Kategori <span style="color: red;">*</span></label>
+                    <select id="menu-category" class="form-input">
+                        <option value="makanan">🍚 Makanan</option>
+                        <option value="minuman">🥤 Minuman</option>
+                        <option value="snack">🍿 Snack</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Harga <span style="color: red;">*</span></label>
+                    <input type="number" id="menu-price" class="form-input" placeholder="Contoh: 20000">
+                </div>
+                <div class="form-group">
+                    <label>Stok <span style="color: red;">*</span></label>
+                    <input type="number" id="menu-stock" class="form-input" value="99" placeholder="Jumlah stok tersedia">
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <textarea id="menu-desc" rows="2" class="form-input" placeholder="Deskripsi singkat menu"></textarea>
+                </div>
+                
+                <!-- Upload Gambar -->
+                <div class="form-group">
+                    <label>Foto Menu <span style="color: red;">*</span></label>
+                    <div style="border: 2px dashed #ddd; border-radius: 10px; padding: 20px; text-align: center; cursor: pointer;" onclick="document.getElementById('menu-image-file').click()">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #e67e22;"></i>
+                        <p style="margin-top: 10px;">Klik untuk upload foto</p>
+                        <small style="color: #999;">Format: JPG, PNG, GIF (Max 2MB)</small>
+                    </div>
+                    <input type="file" id="menu-image-file" accept="image/*" style="display: none;" onchange="prependImage(this)">
+                    <div id="image-preview-container" class="image-preview-container" style="display: none;">
+                        <img id="image-preview" class="image-preview" alt="Preview">
+                        <button type="button" class="btn-upload" onclick="removeImage()">Hapus Gambar</button>
+                    </div>
+                    <div id="upload-progress" class="upload-progress">
+                        <progress value="0" max="100"></progress>
+                        <span> Mengupload gambar...</span>
+                    </div>
+                </div>
+                
+                <button class="btn-save" onclick="saveMenu()">💾 Simpan Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
