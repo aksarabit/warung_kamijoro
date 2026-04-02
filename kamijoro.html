@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="Warung Kamijoro - Nikmati hidangan lezat Nasi Goreng dan Ayam Bakar spesial. Pesan sekarang untuk pengalaman kuliner terbaik!">
+    <meta name="theme-color" content="#e67e22">
+    <title>Warung Kamijoro - Nikmati Hidangan Lezat Khas Nusantara</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="#home">Warung<span>Kamijoro</span></a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#promo">Promo</a></li>
+            <li><a href="#cart-section">Keranjang</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di <span>Warung Kamijoro</span></h1>
+            <p>Nikmati kelezatan masakan Nusantara dengan cita rasa autentik yang menggugah selera</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-primary">Lihat Menu</a>
+                <a href="#cart-section" class="btn-secondary">Pesan Sekarang</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <i class="fas fa-utensils"></i>
+                <h3>20+</h3>
+                <p>Menu Pilihan</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-clock"></i>
+                <h3>09:00 - 21:00</h3>
+                <p>Jam Buka</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-motorcycle"></i>
+                <h3>Gratis Ongkir</h3>
+                <p>Area Kamijoro</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Menu Kami</h2>
+        <p class="section-subtitle">Pilihan hidangan terbaik untuk Anda dan keluarga</p>
+        
+        <!-- Menu Categories -->
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">Semua</button>
+            <button class="category-btn" data-category="makanan">Makanan</button>
+            <button class="category-btn" data-category="minuman">Minuman</button>
+            <button class="category-btn" data-category="snack">Snack</button>
+        </div>
+        
+        <div class="menu-container">
+            <!-- Makanan -->
+            <div class="menu-card" data-category="makanan">
+                <div class="menu-badge">Populer</div>
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Nasi Goreng Spesial">
+                <h3>Nasi Goreng Spesial</h3>
+                <p class="menu-desc">Nasi goreng dengan telur, ayam, dan sayuran segar</p>
+                <p class="menu-price">Rp 20.000</p>
+                <button onclick="addToCart('Nasi Goreng Spesial', 20000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="makanan">
+                <img src="https://images.unsplash.com/photo-1596797038530-2c39fa81b487?w=400" alt="Ayam Bakar Madu">
+                <h3>Ayam Bakar Madu</h3>
+                <p class="menu-desc">Ayam bakar dengan bumbu madu spesial</p>
+                <p class="menu-price">Rp 30.000</p>
+                <button onclick="addToCart('Ayam Bakar Madu', 30000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="makanan">
+                <div class="menu-badge">New</div>
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21a4a5a47?w=400" alt="Sate Ayam">
+                <h3>Sate Ayam</h3>
+                <p class="menu-desc">10 tusuk sate ayam dengan bumbu kacang</p>
+                <p class="menu-price">Rp 25.000</p>
+                <button onclick="addToCart('Sate Ayam', 25000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="makanan">
+                <img src="https://images.unsplash.com/photo-1548940740-204726a19be3?w=400" alt="Mie Goreng">
+                <h3>Mie Goreng</h3>
+                <p class="menu-desc">Mie goreng dengan sayuran dan telur</p>
+                <p class="menu-price">Rp 18.000</p>
+                <button onclick="addToCart('Mie Goreng', 18000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <!-- Minuman -->
+            <div class="menu-card" data-category="minuman">
+                <img src="https://images.unsplash.com/photo-1563257012-2a8b9e4bc39a?w=400" alt="Es Teh Manis">
+                <h3>Es Teh Manis</h3>
+                <p class="menu-desc">Teh manis segar dengan es batu</p>
+                <p class="menu-price">Rp 5.000</p>
+                <button onclick="addToCart('Es Teh Manis', 5000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="minuman">
+                <img src="https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=400" alt="Jus Jeruk">
+                <h3>Jus Jeruk</h3>
+                <p class="menu-desc">Jus jeruk segar tanpa pengawet</p>
+                <p class="menu-price">Rp 8.000</p>
+                <button onclick="addToCart('Jus Jeruk', 8000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="minuman">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Es Kelapa Muda">
+                <h3>Es Kelapa Muda</h3>
+                <p class="menu-desc">Kelapa muda segar dengan sirup</p>
+                <p class="menu-price">Rp 10.000</p>
+                <button onclick="addToCart('Es Kelapa Muda', 10000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <!-- Snack -->
+            <div class="menu-card" data-category="snack">
+                <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=400" alt="Pisang Goreng">
+                <h3>Pisang Goreng</h3>
+                <p class="menu-desc">Pisang goreng crispy dengan topping keju</p>
+                <p class="menu-price">Rp 12.000</p>
+                <button onclick="addToCart('Pisang Goreng', 12000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+            
+            <div class="menu-card" data-category="snack">
+                <img src="https://images.unsplash.com/photo-1587415184623-b93a5c1e823a?w=400" alt="Tahu Isi">
+                <h3>Tahu Isi</h3>
+                <p class="menu-desc">Tahu goreng isi sayuran (5 pcs)</p>
+                <p class="menu-price">Rp 8.000</p>
+                <button onclick="addToCart('Tahu Isi', 8000)">
+                    <i class="fas fa-shopping-cart"></i> Tambah
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Promo Section -->
+<section id="promo" class="promo">
+    <h2 class="section-title">Promo Spesial</h2>
+    <div class="promo-container">
+        <div class="promo-card">
+            <div class="promo-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h3>Paket Hemat</h3>
+            <p>Nasi Goreng + Es Teh Manis</p>
+            <p class="promo-price">Rp 22.000 <span>Rp 25.000</span></p>
+            <button onclick="addPromoPackage()">
+                Pesan Paket
+            </button>
+        </div>
+        
+        <div class="promo-card">
+            <div class="promo-icon">
+                <i class="fas fa-tag"></i>
+            </div>
+            <h3>Diskon 10%</h3>
+            <p>Minimal pembelian Rp 50.000</p>
+            <p class="promo-code">Kode: KAMIJORO10</p>
+        </div>
+        
+        <div class="promo-card">
+            <div class="promo-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Gratis Ongkir</h3>
+            <p>Minimal pembelian Rp 30.000</p>
+            <p>*Syarat dan ketentuan berlaku</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Cart Section -->
+<section id="cart-section">
+    <div class="cart-box">
+        <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
+        <hr>
+        
+        <!-- FORM NAMA PEMBELI -->
+        <div class="customer-info">
+            <h3><i class="fas fa-user"></i> Data Pemesan</h3>
+            <div class="form-group">
+                <label for="customerName">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="customerName" placeholder="Masukkan nama Anda" class="customer-input">
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Nomor WhatsApp <span class="required">*</span></label>
+                <input type="tel" id="customerPhone" placeholder="Contoh: 081234567890" class="customer-input">
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Alamat (opsional)</label>
+                <textarea id="customerAddress" rows="2" placeholder="Alamat lengkap untuk pengantaran" class="customer-input"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="customerNote">Catatan (opsional)</label>
+                <textarea id="customerNote" rows="2" placeholder="Contoh: Tidak pedas, tambah sambal, dll" class="customer-input"></textarea>
+            </div>
+        </div>
+        
+        <!-- METHOD PEMBAYARAN -->
+        <div class="payment-method">
+            <h3><i class="fas fa-credit-card"></i> Metode Pembayaran</h3>
+            <div class="payment-options">
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="cash" checked>
+                    <div class="payment-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div class="payment-info">
+                            <strong>Bayar di Tempat (Cash)</strong>
+                            <small>Bayar langsung saat pesanan datang</small>
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="transfer">
+                    <div class="payment-card">
+                        <i class="fas fa-university"></i>
+                        <div class="payment-info">
+                            <strong>Transfer Bank</strong>
+                            <small>BCA / Mandiri / BRI (transfer ke rekening kami)</small>
+                        </div>
+                    </div>
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="qris">
+                    <div class="payment-card">
+                        <i class="fas fa-qrcode"></i>
+                        <div class="payment-info">
+                            <strong>QRIS (Scan QRIS)</strong>
+                            <small>Scan QR Code menggunakan DANA, OVO, GoPay, dll</small>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            
+            <!-- Detail Rekening Transfer -->
+            <div id="transfer-info" class="bank-info" style="display: none;">
+                <div class="info-box">
+                    <i class="fas fa-university"></i>
+                    <h4>Nomor Rekening Transfer</h4>
+                    <div class="bank-details">
+                        <div class="bank-item">
+                            <span class="bank-name">BCA</span>
+                            <span class="bank-number">123 456 7890</span>
+                            <span class="bank-owner">a.n Warung Kamijoro</span>
+                        </div>
+                        <div class="bank-item">
+                            <span class="bank-name">Mandiri</span>
+                            <span class="bank-number">987 654 3210</span>
+                            <span class="bank-owner">a.n Warung Kamijoro</span>
+                        </div>
+                        <div class="bank-item">
+                            <span class="bank-name">BRI</span>
+                            <span class="bank-number">1122 3344 5566</span>
+                            <span class="bank-owner">a.n Warung Kamijoro</span>
+                        </div>
+                    </div>
+                    <small class="info-note">*Transfer sesuai total pesanan, upload bukti transfer ke WhatsApp</small>
+                </div>
+            </div>
+            
+            <!-- QRIS Image -->
+            <div id="qris-info" class="qris-info" style="display: none;">
+    <div class="qris-box">
+        <i class="fas fa-qrcode"></i>
+        <h4>Scan QRIS untuk Pembayaran</h4>
+        
+        <!-- Tampilkan Total Pembayaran -->
+        <div class="total-payment-info">
+            <p class="total-label">Total yang harus dibayar:</p>
+            <p class="total-amount" id="qris-total-amount">Rp 0</p>
+            <small class="scan-instruction">*Scan QRIS, lalu masukkan nominal di atas</small>
+        </div>
+        
+        <div class="qris-image-container">
+            <img src="qrcode.jpeg" alt="QRIS Warung Kamijoro" class="qris-image" id="qris-image">
+            <p class="qris-instruction">Scan QR Code di atas menggunakan:</p>
+            <div class="qris-apps">
+                <span>DANA</span>
+                <span>OVO</span>
+                <span>GoPay</span>
+                <span>LinkAja</span>
+                <span>ShopeePay</span>
+            </div>
+            <div class="manual-note">
+                <i class="fas fa-info-circle"></i>
+                <small>Setelah scan, masukkan nominal <strong id="nominal-display">Rp 0</strong> pada aplikasi pembayaran</small>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p class="empty-msg">Keranjang masih kosong</p>
+                <p class="empty-sub">Yuk pilih menu favoritmu!</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <span>Total Item: <span id="total-items">0</span></span>
+            </div>
+            <h3>Total: <span id="total-price">Rp 0</span></h3>
+            <button onclick="checkoutWhatsApp()" class="btn-checkout">
+                <i class="fab fa-whatsapp"></i> Konfirmasi Pesanan
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Alamat</h4>
+                        <p>Jl. Kamijoro No. 123, Yogyakarta</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Telepon</h4>
+                        <p>+62 819 0347 8051</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Jam Operasional</h4>
+                        <p>Senin - Minggu: 09:00 - 21:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Warung Kamijoro. All rights reserved.</p>
+        <p>Dibuat dengan <i class="fas fa-heart"></i> untuk pecinta kuliner</p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
